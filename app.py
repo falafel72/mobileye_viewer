@@ -1,7 +1,8 @@
-from flask import Flask,render_template
+from flask import Flask,Response,render_template
 from bokeh.plotting import figure
 from bokeh.layouts import row,column 
 from bokeh.embed import components
+from mobileye_data import MobileyeData
 
 app = Flask(__name__)
 
@@ -19,10 +20,12 @@ def show_charts():
     return render_template('index.html',graph_div=div,graph_script=script)
 
 
-@app.route('/lanedata',methods=['GET'])
+@app.route('/lanedata')
 def get_lane_data():
     # obtain lane data from the MobileyeData class, pass it to the server by returning or using an event stream
-    pass
+    def stream(): 
+        yield 'data: HI\n\n'
+    return Response(stream(),mimetype='text/event-stream')
 
 if __name__ == '__main__':
     app.run(debug=True,port=5000,host='localhost')
