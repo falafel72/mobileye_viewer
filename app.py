@@ -1,23 +1,20 @@
 from flask import Flask,Response,render_template
-from bokeh.plotting import figure
-from bokeh.layouts import row,column 
-from bokeh.embed import components
 from mobileye_data import MobileyeData
 
 app = Flask(__name__)
 
 @app.route('/',methods=['GET'])
 def show_charts():
-    p1 = figure(plot_width=500,plot_height=750,title='Lane Plot')
-    p2 = figure(plot_width=400,plot_height=250,title='Current Speed')
-    p3 = figure(plot_width=400,plot_height=250,title='Current Heading')
-    p4 = figure(plot_width=400,plot_height=250,title='Current Distance')
+    # p1 = figure(plot_width=500,plot_height=750,title='Lane Plot')
+    # p2 = figure(plot_width=400,plot_height=250,title='Current Speed')
+    # p3 = figure(plot_width=400,plot_height=250,title='Current Heading')
+    # p4 = figure(plot_width=400,plot_height=250,title='Current Distance')
 
-    group = row(p1,column(p2,p3,p4))
+    # group = row(p1,column(p2,p3,p4))
 
-    script,div = components(group)
+    # script,div = components(group)
     
-    return render_template('index.html',graph_div=div,graph_script=script)
+    return render_template('index.html')
 
 
 @app.route('/lanedata')

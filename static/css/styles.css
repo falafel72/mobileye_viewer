@@ -1,0 +1,11 @@
+div.left-col {
+    float:left;
+}
+
+div.right-col {
+    float:left;
+}
+
+div.right-col > * {
+    display:block;
+}

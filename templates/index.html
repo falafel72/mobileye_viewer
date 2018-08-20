@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel='stylesheet' href='static/css/bokeh-0.13.0.min.css' type='text/css'/>
-        <script type='text/javascript' src='static/js/bokeh-0.13.0.min.js'></script>
+        <link rel='stylesheet' href='static/css/styles.css' type='text/css'/>
         <script type='text/javascript' src='static/js/scripts.js'></script>
-        {{ graph_script|safe }}
+        <script type='text/javascript' src='static/js/Chart.min.js'></script>
     </head>
     <body>
-        {{ graph_div|safe }}
+        <div class='left-col'>
+            <canvas id='lane-graph' width=500 height=750></canvas>
+        </div>
+        <div class='right-col'>
+            <canvas id='speed-graph' width=400 height=250></canvas>
+            <canvas id='heading-graph' width=400 height=250></canvas>
+            <canvas id='time-graph' width=400 height=250></canvas>
+        </div>
     </body>
 </html>
