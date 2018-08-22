@@ -5,16 +5,16 @@ document.addEventListener('DOMContentLoaded',function(){
     var time_ctx = document.getElementById('time-graph').getContext('2d');
 
     var lane_graph = new Chart(lane_ctx, {
-        type: 'scatter',
+        type: 'line',
         data: {
             datasets: [{
                 label: 'Left Lane',
                 data: [],
-                backgroundColor: '#3E9239'
+                borderColor: '#3E9239'
             }, {
                 label: 'Right Lane',
                 data: [],
-                backgroundColor: '#374C79'
+                borderColor: '#374C79'
             }]
         },
         options: {
@@ -23,17 +23,22 @@ document.addEventListener('DOMContentLoaded',function(){
                     type: 'linear',
                     position: 'bottom'
                 }]
+            },
+            elements: {
+                line: {
+                    tension: 0
+                }
             }
         }
     });
 
     var speed_graph = new Chart(speed_ctx, {
-        type: 'scatter',
+        type: 'line',
         data: {
             datasets: [{
                 label: 'Speed',
                 data: [],
-                backgroundColor: '#56357A'
+                borderColor: '#56357A'
             }]
         },
         options: {
@@ -42,17 +47,22 @@ document.addEventListener('DOMContentLoaded',function(){
                     type: 'linear',
                     position: 'bottom'
                 }]
+            },
+            elements: {
+                line: {
+                    tension: 0
+                }
             }
         }
     });
 
     var heading_graph = new Chart(heading_ctx, {
-        type: 'scatter',
+        type: 'line',
         data: {
             datasets: [{
                 label: 'Heading',
                 data: [],
-                backgroundColor: '#B44B46'
+                borderColor: '#B44B46'
             }]
         },
         options: {
@@ -61,17 +71,22 @@ document.addEventListener('DOMContentLoaded',function(){
                     type: 'linear',
                     position: 'bottom'
                 }]
+            },
+            elements: {
+                line: {
+                    tension: 0
+                }
             }
         }
     });
 
     var time_graph = new Chart(time_ctx, {
-        type: 'scatter',
+        type: 'line',
         data: {
             datasets: [{
                 label: 'Time',
                 data: [],
-                backgroundColor: '#B16B59'
+                borderColor: '#B16B59'
             }]
         },
         options: {
@@ -80,6 +95,11 @@ document.addEventListener('DOMContentLoaded',function(){
                     type: 'linear',
                     position: 'bottom'
                 }]
+            },
+            elements: {
+                line: {
+                    tension: 0
+                }
             }
         }
     });
