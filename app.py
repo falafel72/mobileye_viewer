@@ -63,7 +63,7 @@ def get_lanes(left_p1,left_p2,right_p1,right_p2):
 def tos16(val):
     return -(val & 0x8000) | (val & 0x7fff)
 
-app.route('/lanedata')
+@app.route('/lanedata')
 def get_lane_data():
     # obtain lane data from the MobileyeData class, pass it to the server by returning or using an event stream
     def stream(): 
