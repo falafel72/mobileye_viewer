@@ -86,10 +86,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
     var evtSource = new EventSource('/lanedata');
     evtSource.onmessage = function(evt) {
-        // console.log(speed_graph.data.datasets)
-        var obj = JSON.parse(evt.data)
-        
-        addData(speed_graph,0,obj['points']) 
+        var obj = JSON.parse(evt.data);
+        addData(lane_graph,0,obj['left']);
+        addData(lane_graph,1,obj['right']);
     };
 });
 
