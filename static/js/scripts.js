@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded',function(){
         data: {
             datasets: [{
                 label: 'Left Lane',
-                data: []
+                data: [],
+                backgroundColor: '#3E9239'
             }, {
                 label: 'Right Lane',
-                data: []
+                data: [],
+                backgroundColor: '#374C79'
             }]
         },
         options: {
@@ -30,7 +32,8 @@ document.addEventListener('DOMContentLoaded',function(){
         data: {
             datasets: [{
                 label: 'Speed',
-                data: []
+                data: [],
+                backgroundColor: '#56357A'
             }]
         },
         options: {
@@ -47,8 +50,9 @@ document.addEventListener('DOMContentLoaded',function(){
         type: 'scatter',
         data: {
             datasets: [{
-                label: 'Speed',
-                data: []
+                label: 'Heading',
+                data: [],
+                backgroundColor: '#B44B46'
             }]
         },
         options: {
@@ -61,12 +65,13 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     });
 
-    var time_ctx = new Chart(time_ctx, {
+    var time_graph = new Chart(time_ctx, {
         type: 'scatter',
         data: {
             datasets: [{
-                label: 'Speed',
-                data: []
+                label: 'Time',
+                data: [],
+                backgroundColor: '#B16B59'
             }]
         },
         options: {
@@ -81,22 +86,22 @@ document.addEventListener('DOMContentLoaded',function(){
 
     var evtSource = new EventSource('/lanedata');
     evtSource.onmessage = function(evt) {
-        console.log(evt.data);
+        // console.log(speed_graph.data.datasets)
+        var obj = JSON.parse(evt.data)
+        
+        addData(speed_graph,0,obj['points']) 
     };
 });
 
-function addData(chart,label,data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
+function addData(chart,label_idx,data) {
+    chart.data.datasets[label_idx].data = data;
+    chart.update(0);
 }
 
-function removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
-    });
-    chart.update();
-}
+// function removeData(chart) {
+//     chart.data.labels.pop();
+//     chart.data.datasets.forEach((dataset) => {
+//         dataset.data.pop();
+//     });
+//     chart.update(0);
+// }
