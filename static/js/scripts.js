@@ -10,18 +10,38 @@ document.addEventListener('DOMContentLoaded',function(){
             datasets: [{
                 label: 'Left Lane',
                 data: [],
-                borderColor: '#3E9239'
+                borderColor: '#3E9239',
+                backgroundColor: 'rgba(0,0,0,0)'
             }, {
                 label: 'Right Lane',
                 data: [],
-                borderColor: '#374C79'
+                borderColor: '#374C79',
+                backgroundColor: 'rgba(0,0,0,0)'
             }]
         },
         options: {
             scales: {
                 xAxes: [{
                     type: 'linear',
-                    position: 'bottom'
+                    position: 'bottom',
+                    ticks: {
+                        min: -10,
+                        max: 10
+                    },
+                    scaleLabel: {
+                        display: true, 
+                        labelString: 'Lateral Distance (m)'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min:-10,
+                        max: 120
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Forward Distance (m)'
+                    }
                 }]
             },
             elements: {
