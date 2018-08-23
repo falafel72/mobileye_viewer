@@ -21,12 +21,5 @@ def get_lane_data():
                 yield 'data: %s\n\n' % JSONdumps(lane_data) 
     return Response(stream(),mimetype='text/event-stream')
 
-@app.route('/dcudata')
-def get_dcu_data():
-    def stream(): 
-        while True: 
-            yield
-    return Response(stream(),mimetype='text/event-stream')
-
 if __name__ == '__main__':
     app.run(debug=False,port=5000,host='0.0.0.0')
