@@ -96,14 +96,14 @@ class MobileyeData():
             self.current_rx = r_xtrans + self.current_rx
             self.current_ry = r_ytrans + self.current_ry
             
-            if len(self.current_lx) > 120:
-                self.current_lx = self.current_lx[len(self.current_lx)-120:]
-            if len(self.current_ly) > 120:
-                self.current_ly= self.current_ly[len(self.current_ly)-120:]
-            if len(self.current_rx) > 120:
-                self.current_rx = self.current_rx[len(self.current_rx)-120:]
-            if len(self.current_ry) > 120:
-                self.current_ry = self.current_ry[len(self.current_ry)-120:]
+            if len(self.current_lx) > 240:
+                self.current_lx = self.current_lx[len(self.current_lx)-240:]
+            if len(self.current_ly) > 240:
+                self.current_ly= self.current_ly[len(self.current_ly)-240:]
+            if len(self.current_rx) > 240:
+                self.current_rx = self.current_rx[len(self.current_rx)-240:]
+            if len(self.current_ry) > 240:
+                self.current_ry = self.current_ry[len(self.current_ry)-240:]
 
         llist = [{"x":self.current_lx[i],"y":self.current_ly[i]} for i in range(len(self.current_lx))]
         rlist = [{"x":self.current_rx[i],"y":self.current_ry[i]} for i in range(len(self.current_rx))]
