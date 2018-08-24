@@ -3,19 +3,25 @@ A tool made with Flask and Chart.js to visualise data from both a Mobileye camer
 
 ## Usage
 This tool was intended to run on embedded hardware with a dedicated CAN port. Make sure that your board has the correct drivers before you decide to run it.  
-If your computer does not have Flask, run
+If your board does not have Flask, run
 ```bash
-    pip install Flask
+  pip install Flask
 ```
-The server will run on both python 2 and python 3, so the version of python you install Flask on is irrelevant. Clone this respository with
+The application is made for Python 2.7, but it will run on Python 3 as well. Clone this respository and move into it with
 ```bash
-    git clone https://github.com/falafel72/mobileye_viewer
+  git clone https://github.com/falafel72/mobileye_viewer
+  cd mobileye_viewer
 ```
-and run it with
+Initialise the can port as shown: 
 ```bash
-    python app.py
+  ip link set can0 type can bitrate 500000 triple-sampling on
+  ifconfig can0 up
 ```
-Any computer connected to the same network should be able to view the webpage at the url `server_ip_address:5000`.
+and run the server with 
+```bash
+  python app.py
+```
+Any computer connected to the same network should be able to view the webpage at the url `server_ip_address:5000` (replace `server_ip_address` with your board's ip).
 
 ## Potential Improvements
 Ideally CAN data would be read using python's `can` library or Kvaser's `canlib`, but I was unable to install either of these on the board I was using. Moving the CAN receiving logic to python would eliminate the need to read every incoming data packet, making the program more efficient. More information could also be displayed, such as the locations of cars or other obstacles in front of the car. A more realistic map would be useful for this purpose, requiring a migration away from Chart.js to a more specialised 3d rendering tool.  
