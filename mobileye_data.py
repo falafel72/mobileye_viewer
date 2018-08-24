@@ -48,8 +48,8 @@ class MobileyeData():
                 self.right_p2 = data
             if can_id == 0x600: 
                 self.dcu_speed_p = data
-            if self.left_p1 != [] and self.left_p2 != [] and self.right_p1 != [] and self.right_p2 != [] and self.dcu_speed_p != []:	
-                yield self.get_lanes()
+                if self.left_p1 != [] and self.left_p2 != [] and self.right_p1 != [] and self.right_p2 != [] and self.dcu_speed_p != []:	
+                    yield self.get_lanes()
 
     def get_lanes(self):
         tos16 = lambda(val): -(val & 0x8000) | (val & 0x7fff)
